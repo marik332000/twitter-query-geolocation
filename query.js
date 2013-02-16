@@ -80,7 +80,26 @@ $('form').submit(function(event) {
     });
 });
 
+function quote(string) {
+    return '"' + string.replace(/"/, '""') + '"';
+}
+
+function toCSV(results) {
+    var output = [];
+    results.forEach(function(result) {
+        var row = [];
+        row.push(result.from_user);
+        row.push(quote(result.created_at));
+        row.push(result.geo.coordinates[0]);
+        row.push(result.geo.coordinates[1]);
+        row.push(quote(result.text));
+        output.push(row.join(','));
+    });
+    return output.join('\n');
+}
+
 $('#save').bind('click', function(event) {
     event.preventDefault();
-    alert('TROLOLOLO');
+    var csv = toCSV(results);
+    location = 'data:text/csv,' + csv;
 });
