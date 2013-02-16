@@ -1,5 +1,40 @@
 body {
     font-family: sans-serif;
+    text-align: center;
+    background-color: #dfd;
+}
+
+#query {
+    width: 300px;
+    font-size: 16px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 8px;
+    box-shadow: none;
+    font-weight: bold;
+    display: block;
+    margin: 5px auto;
+}
+
+#query:focus {
+    box-shadow: 0 0 2px 2px orange;
+}
+
+input[type=submit], button {
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+#status {
+    border: 1px solid black;
+    display: block;
+    width: 500px;
+    padding: 5px;
+    margin: 5px auto;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: lightgreen;
+    text-align: center;
 }
 
 table {
