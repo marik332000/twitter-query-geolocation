@@ -18,10 +18,20 @@ th {
 }
 
 td {
-    font-size: 12px;
-    padding: 1px 5px;
+    font-size: 14px;
+    padding: 2px 5px;
 }
 
 tr:nth-child(even) {
     background-color: lightgray;
+}
+
+.time {
+    font-size: 10px;
+    white-space: nowrap;
+    font-family: monospace;
+}
+
+.coord {
+    font-family: monospace;
 }

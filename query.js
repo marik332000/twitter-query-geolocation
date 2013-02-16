@@ -27,11 +27,13 @@ $('form').submit(function(event) {
                 if (r.geo) {
                     count++;
                     results.push(r);
-                    var user = $('<td/>').text(r.from_user);
-                    var time = $('<td/>').text(r.created_at);
-                    var text = $('<td/>').text(r.text);
-                    var lat = $('<td/>').text(r.geo.coordinates[0]);
-                    var lon = $('<td/>').text(r.geo.coordinates[1]);
+                    var user = $('<td/>').addClass('user').text(r.from_user);
+                    var time = $('<td/>').addClass('time').text(r.created_at);
+                    var text = $('<td/>').addClass('tweet').text(r.text);
+                    var lat = $('<td/>').addClass('coord')
+                            .text(r.geo.coordinates[0]);
+                    var lon = $('<td/>').addClass('coord')
+                            .text(r.geo.coordinates[1]);
                     var row = $('<tr/>')
                             .append(user)
                             .append(time)
