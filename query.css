@@ -1,0 +1,27 @@
+body {
+    font-family: sans-serif;
+}
+
+table {
+    width: 100%;
+    text-align: left;
+    border: none;
+}
+
+td, th {
+    border: 1px solid gray;
+}
+
+th {
+    background: lightblue;
+    padding: 3px 5px;
+}
+
+td {
+    font-size: 12px;
+    padding: 1px 5px;
+}
+
+tr:nth-child(even) {
+    background-color: lightgray;
+}
