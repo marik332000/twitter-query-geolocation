@@ -81,7 +81,7 @@ $('form').submit(function(event) {
 });
 
 function quote(string) {
-    return '"' + string.replace(/"/, '""') + '"';
+    return '"' + string.replace(/"/g, '""') + '"';
 }
 
 function toCSV(results) {
