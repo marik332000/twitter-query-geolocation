@@ -101,5 +101,5 @@ function toCSV(results) {
 $('#save').bind('click', function(event) {
     event.preventDefault();
     var csv = toCSV(results);
-    location = 'data:text/csv,' + csv;
+    location = 'data:text/csv;base64,' + Base64.encode(csv);
 });
