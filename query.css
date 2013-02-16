@@ -61,6 +61,10 @@ tr:nth-child(even) {
     background-color: lightgray;
 }
 
+tr:nth-child(odd) {
+    background-color: white;
+}
+
 .time {
     font-size: 10px;
     white-space: nowrap;

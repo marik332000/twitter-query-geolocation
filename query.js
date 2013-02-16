@@ -1,3 +1,7 @@
+/*
+ * https://dev.twitter.com/docs/api/1/get/search
+ */
+
 var search = 'http://search.twitter.com/search.json';
 
 function getProperty(prop) {
@@ -26,6 +30,12 @@ function makeRow(result) {
         .append(text);
 }
 
+function hasGeo(result) {
+    return result.geo !== null &&
+        result.geo.coordinates[0] !== 0 &&
+        result.geo.coordinates[0] !== 0;
+}
+
 var results = [], last = null;
 $('form').submit(function(event) {
     event.preventDefault();
@@ -41,10 +51,10 @@ $('form').submit(function(event) {
         if (last.error) {
             status('Done.');
         } else {
-            response.results.forEach(function(r) {
-                if (r.geo) {
-                    results.push(r);
-                    $output.append(makeRow(r));
+            response.results.forEach(function(result) {
+                if (hasGeo(result)) {
+                    results.push(result);
+                    $output.append(makeRow(result));
                 }
             });
             if (response.page < 25) {
@@ -68,4 +78,9 @@ $('form').submit(function(event) {
         data: args,
         success: appender
     });
+});
+
+$('#save').bind('click', function(event) {
+    event.preventDefault();
+    alert('TROLOLOLO');
 });
