@@ -74,3 +74,10 @@ tr:nth-child(odd) {
 .coord {
     font-family: monospace;
 }
+
+#map {
+    width: 800px;
+    height: 400px;
+    background-image: url(equirectangular.jpg);
+    border: 2px solid gray;
+}

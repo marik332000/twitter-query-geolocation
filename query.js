@@ -38,6 +38,17 @@ function hasGeo(result) {
         result.geo.coordinates[0] !== 0;
 }
 
+var map = $('#map').get(0);
+var ctx = map.getContext('2d');
+ctx.translate(map.width / 2, map.height / 2);
+function draw(lat, lon) {
+    ctx.fillStyle = 'red';
+    ctx.globalAlpha = 0.75;
+    ctx.beginPath();
+    ctx.arc(lon * map.width / 360, lat * map.height / -180, 1, 0, 2 * Math.PI);
+    ctx.fill();
+}
+
 var results = [], last = null;
 $('form').submit(function(event) {
     event.preventDefault();
@@ -57,6 +68,7 @@ $('form').submit(function(event) {
                     result.q = args.q;
                     results.push(result);
                     $('#output').append(makeRow(result));
+                    draw(result.geo.coordinates[0], result.geo.coordinates[1]);
                 }
             });
             if (response.page < 25) {
