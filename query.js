@@ -49,6 +49,13 @@ function draw(lat, lon) {
     ctx.fill();
 }
 
+function clear() {
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, map.width, map.height);
+    ctx.restore();
+}
+
 var results = [], last = null;
 $('form').submit(function(event) {
     event.preventDefault();
@@ -117,4 +124,14 @@ $('#save').bind('click', function(event) {
     event.preventDefault();
     var csv = toCSV(results);
     location = 'data:text/csv;base64,' + Base64.encode(csv);
+});
+
+$('#reset').bind('click', function(event) {
+    event.preventDefault();
+    if (confirm("Really clear all data?")) {
+        $('#query').val('');
+        clear();
+        $('tr').slice(1).remove();
+        results = [];
+    }
 });
