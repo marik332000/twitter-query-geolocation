@@ -20,7 +20,7 @@ body {
     box-shadow: 0 0 2px 2px orange;
 }
 
-input[type=submit], button {
+input[type=submit], button, select {
     font-size: 18px;
     border-radius: 8px;
 }

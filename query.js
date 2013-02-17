@@ -43,7 +43,7 @@ $('form').submit(function(event) {
     var args = {
         q: $('#query').val(),
         rpp: 100,
-        result_type: 'mixed'
+        result_type: $('#type').val()
     };
 
     function appender(response) {
