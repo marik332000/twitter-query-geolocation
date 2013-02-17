@@ -22,12 +22,14 @@ function makeRow(result) {
     var text = $('<td/>').addClass('tweet').text(result.text);
     var lat = $('<td/>').addClass('coord').text(result.geo.coordinates[0]);
     var lon = $('<td/>').addClass('coord').text(result.geo.coordinates[1]);
+    var q = $('<td/>').addClass('query').text(result.q);
     return $('<tr/>')
         .append(user)
         .append(time)
         .append(lat)
         .append(lon)
-        .append(text);
+        .append(text)
+        .append(q);
 }
 
 function hasGeo(result) {
@@ -39,7 +41,6 @@ function hasGeo(result) {
 var results = [], last = null;
 $('form').submit(function(event) {
     event.preventDefault();
-    var $output = $('#output');
     var args = {
         q: $('#query').val(),
         rpp: 100,
@@ -53,8 +54,9 @@ $('form').submit(function(event) {
         } else {
             response.results.forEach(function(result) {
                 if (hasGeo(result)) {
+                    result.q = args.q;
                     results.push(result);
-                    $output.append(makeRow(result));
+                    $('#output').append(makeRow(result));
                 }
             });
             if (response.page < 25) {
@@ -93,6 +95,7 @@ function toCSV(results) {
         row.push(result.geo.coordinates[0]);
         row.push(result.geo.coordinates[1]);
         row.push(quote(result.text));
+        row.push(quote(result.q));
         output.push(row.join(','));
     });
     return output.join('\n');
